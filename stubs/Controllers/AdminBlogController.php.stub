@@ -47,4 +47,11 @@ class AdminBlogController extends Controller
 
         return redirect()->route('admin.blog.index')->with('success', 'Post updated successfully');
     }
+
+    public function destroy(Post $post): RedirectResponse
+    {
+        $post->delete();
+
+        return redirect()->route('admin.blog.index')->with('success', 'Post deleted successfully');
+    }
 }

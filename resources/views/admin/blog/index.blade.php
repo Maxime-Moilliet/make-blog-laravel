@@ -34,6 +34,15 @@
             </button>
         </li>
     </ul>
+    @foreach($posts_draft as $post_draft)
+        @include('admin.blog._modal-delete', ['post' => $post_draft])
+    @endforeach
+    @foreach($posts_published as $post_published)
+        @include('admin.blog._modal-delete', ['post' => $post_published])
+    @endforeach
+    @foreach($posts_archived as $post_archived)
+        @include('admin.blog._modal-delete', ['post' => $post_archived])
+    @endforeach
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="draft-tab-pane" role="tabpanel" aria-labelledby="draft-tab"
              tabindex="0">
@@ -61,6 +70,10 @@
                                            class="btn btn-sm btn-warning">
                                             Edit
                                         </a>
+                                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                                data-bs-target="#delete-post-{{ $post_draft->id }}">
+                                            Delete
+                                        </button>
                                     </div>
                                 </td>
                                 <td>{{ $post_draft->title }}</td>
@@ -98,6 +111,10 @@
                                            class="btn btn-sm btn-warning">
                                             Edit
                                         </a>
+                                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                                data-bs-target="#delete-post-{{ $post_published->id }}">
+                                            Delete
+                                        </button>
                                     </div>
                                 </td>
                                 <td>{{ $post_published->title }}</td>
@@ -135,6 +152,10 @@
                                            class="btn btn-sm btn-warning">
                                             Edit
                                         </a>
+                                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                                data-bs-target="#delete-post-{{ $post_archived->id }}">
+                                            Delete
+                                        </button>
                                     </div>
                                 </td>
                                 <td>{{ $post_archived->title }}</td>

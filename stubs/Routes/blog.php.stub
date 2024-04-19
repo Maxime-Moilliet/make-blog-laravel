@@ -12,3 +12,4 @@ Route::get('/admin/blog/create', [AdminBlogController::class, 'create'])->name('
 Route::post('/admin/blog', [AdminBlogController::class, 'store'])->name('admin.blog.store');
 Route::get('/admin/blog/{post}', [AdminBlogController::class, 'edit'])->name('admin.blog.edit');
 Route::put('/admin/blog/{post}', [AdminBlogController::class, 'update'])->name('admin.blog.update');
+Route::delete('/admin/blog/{post}', [AdminBlogController::class, 'destroy'])->name('admin.blog.destroy');
