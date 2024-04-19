@@ -10,6 +10,7 @@ use MakeBlogLaravel\Commands\Controllers\AdminBlogControllerCommand;
 use MakeBlogLaravel\Commands\Controllers\BlogControllerCommand;
 use MakeBlogLaravel\Commands\Enums\PostStatusEnumCommand;
 use MakeBlogLaravel\Commands\Models\PostModelCommand;
+use MakeBlogLaravel\Commands\Requests\PostRequestCommand;
 use MakeBlogLaravel\Commands\Routes\BlogRouteCommand;
 use MakeBlogLaravel\Commands\Routes\BlogRouteInWebRouteCommand;
 use MakeBlogLaravel\Commands\Views\AdminBlogViewCommand;
@@ -29,6 +30,7 @@ class InstallCommand extends Command
         $this->call(BlogRouteCommand::class);
         $this->call(BlogControllerCommand::class);
         $this->call(AdminBlogControllerCommand::class);
+        $this->call(PostRequestCommand::class);
 
         (new BlogRouteInWebRouteCommand())->handle();
         (new BlogViewCommand())->handle();

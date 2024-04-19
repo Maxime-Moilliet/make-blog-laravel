@@ -1,0 +1,25 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Requests\Blog;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class PostRequest extends FormRequest
+{
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    public function rules(): array
+    {
+        return [
+            'title' => 'required|string|max:255',
+            'slug' => 'required|string|max:255|unique:posts,slug,' . $this->post,
+            'content' => 'nullable|string',
+            'status' => 'required|string|in:draft,published,archived',
+        ];
+    }
+}
