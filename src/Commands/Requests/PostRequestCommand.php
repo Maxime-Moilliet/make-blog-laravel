@@ -15,7 +15,7 @@ class PostRequestCommand extends GeneratorCommand
 
     protected function getStub(): string
     {
-        return __DIR__ . '/../../../stubs/Requests/PostRequest.php.stub';
+        return __DIR__.'/../../../stubs/Requests/PostRequest.php.stub';
     }
 
     protected function getDefaultNamespace($rootNamespace): string
@@ -27,7 +27,7 @@ class PostRequestCommand extends GeneratorCommand
     {
         $name = Str::replaceFirst($this->rootNamespace(), '', $name);
 
-        return $this->laravel['path'] . '/' . str_replace('\\', '/', $name) . '.php';
+        return $this->laravel['path'].'/'.str_replace('\\', '/', $name).'.php';
     }
 
     protected function getNameInput(): string
