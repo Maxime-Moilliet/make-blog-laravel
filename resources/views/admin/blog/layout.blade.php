@@ -9,6 +9,18 @@
     @yield('styles')
 </head>
 <body>
+<header class="navbar navbar-expand-lg navbar bg-primary border-bottom">
+    <div class="container-fluid">
+        <a class="navbar-brand text-white" href={{ route('admin.blog.index') }}>Blog</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active text-white" aria-current="page" href="#">Back to Admin</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
 <main class="container">
     @yield('content')
 </main>
