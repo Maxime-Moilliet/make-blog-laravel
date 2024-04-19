@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\PostStatusEnum;
 use App\Models\Post;
 use App\Requests\Blog\PostRequest;
 use Illuminate\Contracts\Foundation\Application;
@@ -17,7 +18,9 @@ class AdminBlogController extends Controller
     public function index(): Application|Factory|View
     {
         return view('admin.blog.index', [
-            'posts' => Post::orderBy('created_at', 'desc')->get(),
+            'posts_draft' => Post::where('status', PostStatusEnum::DRAFT)->orderBy('created_at', 'desc')->get(),
+            'posts_published' => Post::where('status', PostStatusEnum::PUBLISHED)->orderBy('created_at', 'desc')->get(),
+            'posts_archived' => Post::where('status', PostStatusEnum::ARCHIVED)->orderBy('created_at', 'desc')->get(),
         ]);
     }
 
