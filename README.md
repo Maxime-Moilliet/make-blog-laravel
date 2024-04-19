@@ -1,10 +1,5 @@
 # make-blog-laravel
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/maxime-moilliet/make-blog-laravel.svg?style=flat-square)](https://packagist.org/packages/maxime-moilliet/make-blog-laravel)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/maxime-moilliet/make-blog-laravel/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/maxime-moilliet/make-blog-laravel/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/maxime-moilliet/make-blog-laravel/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/maxime-moilliet/make-blog-laravel/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/maxime-moilliet/make-blog-laravel.svg?style=flat-square)](https://packagist.org/packages/maxime-moilliet/make-blog-laravel)
-
 ## Installation
 
 You can install the package via composer:
