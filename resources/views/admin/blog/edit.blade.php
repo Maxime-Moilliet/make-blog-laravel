@@ -4,7 +4,6 @@
     <div class="d-flex justify-content-between align-items-start py-4">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Admin</a></li>
                 <li class="breadcrumb-item" aria-current="page"><a href="{{ route('admin.blog.index') }}">Posts</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Edit Post</li>
             </ol>
