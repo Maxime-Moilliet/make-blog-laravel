@@ -5,19 +5,19 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Post;
-use Illuminate\Routing\Controller;
-use Illuminate\View\View;
+use App\Requests\Blog\PostRequest;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
-use App\Requests\Blog\PostRequest;
+use Illuminate\Routing\Controller;
+use Illuminate\View\View;
 
 class AdminBlogController extends Controller
 {
     public function index(): Application|Factory|View
     {
         return view('admin.blog.index', [
-            'posts' => Post::get(),
+            'posts' => Post::orderBy('created_at', 'desc')->get(),
         ]);
     }
 
@@ -31,5 +31,17 @@ class AdminBlogController extends Controller
         Post::create($request->validated());
 
         return redirect()->route('admin.blog.index')->with('success', 'Post created successfully');
+    }
+
+    public function edit(Post $post): Application|Factory|View
+    {
+        return view('admin.blog.edit', ['post' => $post]);
+    }
+
+    public function update(PostRequest $request, Post $post): RedirectResponse
+    {
+        $post->update($request->validated());
+
+        return redirect()->route('admin.blog.index')->with('success', 'Post updated successfully');
     }
 }

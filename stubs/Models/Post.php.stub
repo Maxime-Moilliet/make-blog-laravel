@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use App\Casts\Json;
 use App\Enums\PostStatusEnum;
-use Illuminate\Database\Eloquent\Casts\AsEnumCollection;
 
 class Post extends Model
 {
@@ -23,7 +22,7 @@ class Post extends Model
     {
         return [
             'content' => Json::class,
-            'status' => AsEnumCollection::of(PostStatusEnum::class),
+            'status' => PostStatusEnum::class,
         ];
     }
 

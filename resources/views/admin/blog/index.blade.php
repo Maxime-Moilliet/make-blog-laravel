@@ -36,13 +36,18 @@
                 @foreach($posts as $post)
                     <tr>
                         <td>
-                            <a href="{{ route('blog.show', $post->slug) }}" class="btn btn-sm btn-primary">
-                                Show
-                            </a>
+                            <div class="d-flex gap-2">
+                                <a href="{{ route('blog.show', $post->slug) }}" class="btn btn-sm btn-primary">
+                                    Show
+                                </a>
+                                <a href="{{ route('admin.blog.edit', $post) }}" class="btn btn-sm btn-warning">
+                                    Edit
+                                </a>
+                            </div>
                         </td>
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->slug }}</td>
-                        <td>{{ $post->status[0] }}</td>
+                        <td>{{ $post->status }}</td>
                         <td>{{ $post->created_at->format('d/m/Y à h:i') }}</td>
                     </tr>
                 @endforeach

@@ -15,9 +15,14 @@ class PostRequest extends FormRequest
 
     public function rules(): array
     {
+        $id = null;
+        if($this->post) {
+            $id = $this->post->id;
+        }
+
         return [
             'title' => 'required|string|max:255',
-            'slug' => 'required|string|max:255|unique:posts,slug,' . $this->post,
+            'slug' => 'required|string|max:255|unique:posts,slug,' . $id,
             'content' => 'nullable|string',
             'status' => 'required|string|in:draft,published,archived',
         ];
