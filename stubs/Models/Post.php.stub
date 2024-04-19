@@ -1,0 +1,33 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use App\Casts\Json;
+use App\Enums\PostStatusEnum;
+
+class Post extends Model
+{
+    protected $fillable = [
+        'title',
+        'slug',
+        'content',
+        'status'
+    ];
+
+    protected function casts(): array
+    {
+        return [
+            'content' => Json::class,
+        ];
+    }
+
+    public function scopeVisibleLatest(Builder $query): void
+    {
+        $query->where('status', PostStatusEnum::PUBLISHED)
+            ->orderBy('created_at', 'desc');
+    }
+}

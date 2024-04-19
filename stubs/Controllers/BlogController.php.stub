@@ -1,0 +1,30 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Controllers;
+
+use App\Models\Post;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Routing\Controller;
+use Illuminate\View\View;
+
+class BlogController extends Controller
+{
+    public function index(): Factory|View|Application
+    {
+        return view('blog.index', [
+            'posts' => Post::visibleLatest()->paginate(12),
+        ]);
+    }
+
+    public function show(string $slug): Factory|View|Application
+    {
+        $post = Post::where('slug', $slug)->firstOrFail();
+
+        return view('blog.show', [
+            'post' => $post,
+        ]);
+    }
+}
