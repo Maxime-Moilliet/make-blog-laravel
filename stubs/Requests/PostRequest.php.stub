@@ -18,8 +18,7 @@ class PostRequest extends FormRequest
         $id = $this->route('post') ? $this->route('post')->id : null;
 
         return [
-            'title' => 'required|string',
-            'slug' => 'required|string|unique:posts,slug,' . $id,
+            'title' => 'required|string|unique:posts,title,' . $id,
             'content' => 'nullable|string',
             'status' => 'required|string|in:draft,published,archived',
         ];

@@ -33,14 +33,6 @@
                             <span class="text-danger d-block mt-1" role="alert">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="mb-3">
-                            <label for="slug" class="form-label">Slug</label>
-                            <input type="text" id="slug" name="slug" value="{{ old('slug', $post->slug) }}"
-                                   class="form-control"/>
-                            @error('slug')
-                            <span class="text-danger d-block mt-1" role="alert">{{ $message }}</span>
-                            @enderror
-                        </div>
                         <div class="mb-4">
                             <label for="status" class="form-label">Status</label>
                             <select name="status" id="status" class="form-control">

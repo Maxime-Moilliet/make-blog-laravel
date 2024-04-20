@@ -12,6 +12,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\View\View;
+use Cocur\Slugify\Slugify;
 
 class AdminBlogController extends Controller
 {
@@ -29,9 +30,12 @@ class AdminBlogController extends Controller
         return view('admin.blog.create');
     }
 
-    public function store(PostRequest $request): RedirectResponse
+    public function store(PostRequest $request, Slugify $slugify): RedirectResponse
     {
-        Post::create($request->validated());
+        Post::create([
+            ...$request->validated(),
+            'slug' => $slugify->slugify($request->get('title')),
+        ]);
 
         return redirect()->route('admin.blog.index')->with('success', 'Post created successfully');
     }
@@ -41,9 +45,12 @@ class AdminBlogController extends Controller
         return view('admin.blog.edit', ['post' => $post]);
     }
 
-    public function update(PostRequest $request, Post $post): RedirectResponse
+    public function update(PostRequest $request, Post $post, Slugify $slugify): RedirectResponse
     {
-        $post->update($request->validated());
+        $post->update([
+            ...$request->validated(),
+            'slug' => $slugify->slugify($request->get('title')),
+        ]);
 
         return redirect()->route('admin.blog.index')->with('success', 'Post updated successfully');
     }
