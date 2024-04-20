@@ -15,10 +15,7 @@ class PostRequest extends FormRequest
 
     public function rules(): array
     {
-        $id = null;
-        if($this->post) {
-            $id = $this->post->id;
-        }
+        $id = $this->route('post') ? $this->route('post')->id : null;
 
         return [
             'title' => 'required|string',
