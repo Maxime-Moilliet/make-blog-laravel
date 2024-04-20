@@ -21,8 +21,8 @@ class PostRequest extends FormRequest
         }
 
         return [
-            'title' => 'required|string|max:255',
-            'slug' => 'required|string|max:255|unique:posts,slug,' . $id,
+            'title' => 'required|string',
+            'slug' => 'required|string|unique:posts,slug,' . $id,
             'content' => 'nullable|string',
             'status' => 'required|string|in:draft,published,archived',
         ];
