@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Admin\AdminBlogController;
+use App\Http\Controllers\BlogController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
@@ -13,3 +13,4 @@ Route::post('/admin/blog', [AdminBlogController::class, 'store'])->name('admin.b
 Route::get('/admin/blog/{post}', [AdminBlogController::class, 'edit'])->name('admin.blog.edit');
 Route::put('/admin/blog/{post}', [AdminBlogController::class, 'update'])->name('admin.blog.update');
 Route::delete('/admin/blog/{post}', [AdminBlogController::class, 'destroy'])->name('admin.blog.destroy');
+Route::delete('/admin/blog/destroy-image/{post}', [AdminBlogController::class, 'destroyImage'])->name('admin.blog.destroyImage');

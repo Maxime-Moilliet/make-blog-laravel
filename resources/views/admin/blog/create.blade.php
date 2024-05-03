@@ -13,7 +13,7 @@
         </div>
     </div>
 
-    <form action="{{ route('admin.blog.store') }}" method="post">
+    <form action="{{ route('admin.blog.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-md-4">
@@ -30,6 +30,23 @@
                             <span class="text-danger d-block mt-1" role="alert">{{ $message }}</span>
                             @enderror
                         </div>
+                        <div class="mb-3">
+                            <div class="d-flex align-items-end justify-content-between">
+                                <div class="w-100">
+                                    <label for="slug" class="form-label">Slug</label>
+                                    <input type="text" id="slug" name="slug" value="{{ old('slug') }}"
+                                           class="form-control w-100"/>
+                                    @error('slug')
+                                    <span class="text-danger d-block mt-1" role="alert">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <button type="button" class="btn btn-primary ms-2" id="slug-generator">Generate</button>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="main_image" class="form-label">Image</label>
+                            <input type="file" name="main_image" id="main_image" class="form-control">
+                        </div>
                         <div class="mb-4">
                             <label for="status" class="form-label">Status</label>
                             <select name="status" id="status" class="form-control">
@@ -40,6 +57,47 @@
                             @error('status')
                             <span class="text-danger d-block mt-1" role="alert">{{ $message }}</span>
                             @enderror
+                        </div>
+                        <div>
+                            <div class="mb-2">
+                                <h1 class="card-title fs-4 m-0">Post Seo Form</h1>
+                            </div>
+                            <div>
+                                <div class="mb-3">
+                                    <label for="seo_title" class="form-label">Title</label>
+                                    <input type="text" id="seo_title" name="seo_title" value="{{ old('seo_title') }}"
+                                           class="form-control"/>
+                                    @error('seo_title')
+                                    <span class="text-danger d-block mt-1" role="alert">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="seo_description" class="form-label">Description</label>
+                                    <textarea type="text" id="seo_description" name="seo_description"
+                                              class="form-control">{{ old('seo_description') }}</textarea>
+                                    @error('seo_description')
+                                    <span class="text-danger d-block mt-1" role="alert">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="seo_keywords" class="form-label">Keywords</label>
+                                    <input type="text" id="seo_keywords" name="seo_keywords"
+                                           value="{{ old('seo_keywords') }}"
+                                           class="form-control"/>
+                                    @error('seo_keywords')
+                                    <span class="text-danger d-block mt-1" role="alert">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="seo_canonical" class="form-label">Canonical</label>
+                                    <input type="text" id="seo_canonical" name="seo_canonical"
+                                           value="{{ old('seo_canonical') }}"
+                                           class="form-control"/>
+                                    @error('seo_canonical')
+                                    <span class="text-danger d-block mt-1" role="alert">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
                         <div>
                             <button type="submit" class="btn btn-primary w-100">Save</button>
@@ -145,6 +203,17 @@
                     console.log('Saving failed: ', error)
                 });
             }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <script>
+        const inputTitle = document.getElementById('title');
+        const slugButton = document.getElementById('slug-generator');
+
+        slugButton.addEventListener('click', function () {
+            const title = inputTitle.value;
+            const slug = _.kebabCase(title);
+            document.getElementById('slug').value = slug;
         });
     </script>
 @endpush

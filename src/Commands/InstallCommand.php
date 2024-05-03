@@ -10,6 +10,7 @@ use MakeBlogLaravel\Commands\Controllers\AdminBlogControllerCommand;
 use MakeBlogLaravel\Commands\Controllers\BlogControllerCommand;
 use MakeBlogLaravel\Commands\Enums\PostStatusEnumCommand;
 use MakeBlogLaravel\Commands\Models\PostModelCommand;
+use MakeBlogLaravel\Commands\Models\SeoModelCommand;
 use MakeBlogLaravel\Commands\Requests\PostRequestCommand;
 use MakeBlogLaravel\Commands\Routes\BlogRouteCommand;
 use MakeBlogLaravel\Commands\Routes\BlogRouteInWebRouteCommand;
@@ -25,6 +26,7 @@ class InstallCommand extends Command
     public function handle(): void
     {
         $this->call(PostModelCommand::class);
+        $this->call(SeoModelCommand::class);
         $this->call(PostStatusEnumCommand::class);
         $this->call(JsonCastCommand::class);
         $this->call(BlogRouteCommand::class);

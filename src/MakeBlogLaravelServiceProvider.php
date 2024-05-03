@@ -20,6 +20,7 @@ class MakeBlogLaravelServiceProvider extends PackageServiceProvider
         $package
             ->name('make-blog-laravel')
             ->hasMigration('create_posts_table')
+            ->hasMigration('create_seo_table')
             ->hasCommand(InstallCommand::class);
     }
 }

@@ -19,8 +19,14 @@ class PostRequest extends FormRequest
 
         return [
             'title' => 'required|string|unique:posts,title,' . $id,
+            'slug' => 'required|string|unique:posts,slug,' . $id,
+            'main_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:20048',
             'content' => 'nullable|string',
             'status' => 'required|string|in:draft,published,archived',
+            'seo_title' => 'nullable|string',
+            'seo_description' => 'nullable|string',
+            'seo_keywords' => 'nullable|string',
+            'seo_canonical' => 'nullable|string',
         ];
     }
 }
